@@ -3,12 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
     path: 'registro',
-    loadChildren: () => import('./pages/registro/registro.module') 
+    loadChildren: () =>  import('./pages/registro/registro.module')
     .then(m => m.RegistroModule)
   }
 ]
@@ -18,10 +19,14 @@ const routes: Routes = [
     AppComponent
   ],
   imports: [
+    RouterModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

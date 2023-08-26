@@ -1,5 +1,40 @@
-<input type = "nome" placeholder="Nome"><br>
-<input type = "email" placeholder="Email"><br>
-<input type = "cpf" placeholder="000.000.000-00"><br>
-<input type = "celular" placeholder="(xx) xxxxx-xxxx"><br>
+    
+<main>    
+    <form>
+        <h1>Cadastro de Colaborador</h1>
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input type="nome" matInput placeholder="Nome Completo">  
+        </mat-form-field>
+        
+        <mat-form-field>
+        
+        <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Ex: pat@example.com">  
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>CPF</mat-label>
+            <input type="cpf" matInput placeholder="000.000.000-00">  
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Celular</mat-label>
+            <mat-icon matSuffix>phone</mat-icon>
+            <input type="tel" matInput placeholder="(XX) XXXXX-XXXX">  
+        </mat-form-field>
 
+        <mat-selection-list #conhecimentos>
+            <mat-label>Conhecimentos</mat-label>
+            <mat-list-option *ngFor="let conhecimento of tiposDeConhecimento">
+              {{conhecimento}}
+            </mat-list-option>
+          </mat-selection-list>
+        <p>
+            Options selected: {{conhecimentos.selectedOptions.selected.length}}
+        </p>
+
+        <button mat-raised-button color="primary" test-id="botaoCadastro">Cadastrar</button>
+         
+    </form>
+</main>
