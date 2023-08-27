@@ -6,6 +6,14 @@ import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {ReactiveFormsModule} from '@angular/forms'
+import {FormControl} from '@angular/forms'
+import {
+  MatSlideToggleModule,
+  _MatSlideToggleRequiredValidatorModule,
+} from '@angular/material/slide-toggle';
+
+import {NgxMaskModule} from 'ngx-mask'
 
 const routes: Routes = [
   {
@@ -27,7 +35,10 @@ const routes: Routes = [
     MatInputModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    NgxMaskModule.forRoot(),
   ]
 })
 export class RegistroModule {
