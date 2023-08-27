@@ -1,6 +1,5 @@
-    
 <main>    
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <h1><b>Cadastro de Colaborador</b></h1>
         <mat-form-field>
             <mat-label>Nome</mat-label>
@@ -40,25 +39,19 @@
         <mat-form-field>
             <mat-label>Celular</mat-label>
             <mat-icon matSuffix>phone</mat-icon>
-            <input type="tel" matInput placeholder="(XX) XXXXX-XXXX" mask= "(00) 00000-0000">  
+            <input type="tel" matInput placeholder="(XX) XXXXX-XXXX" mask= "(00) 00000-0000" formControlName="celular">  
         </mat-form-field>
 
-        <mat-selection-list #conhecimentos FormControlName="conhecimentosLista" multiple (selectionChange)="desativarNaoMarcados()">
-            <mat-label><h4><b>Conhecimentos*</b></h4></mat-label>
-            <mat-list-option #foo *ngFor="let conhecimento of tiposDeConhecimento" [value]="conhecimento"
-            [disabled]="conhecimentos.selectedOptions.selected.length >= 3 && !foo.selected">
-              {{conhecimento}}
-            </mat-list-option>
-            <mat-error *ngIf="conhecimentos.selectedOptions.selected.length < 1">
-                Conhecimentos é <strong>obrigatorio!</strong>  
-              </mat-error>
-          </mat-selection-list>
-        <p>
-            Options selected: {{conhecimentos.selectedOptions.selected.length}}
-        </p>
+        <h4><b>Conhecimentos (escolha até 3)</b></h4>
+        <div id="listaCheckbox">
+        <label *ngFor="let item of conhecimentos.listaConhecimento" >
+            
+              <input type="checkbox" [name]="item.nome" [value]="item.nome">
+              {{item.nome}}         
+        </label>  
+        </div>
 
-        <button mat-raised-button color="primary" [disabled]= "!form.get('nome')!.valid || !form.get('email')!.valid || !form.get('cpf')!.valid 
-        || conhecimentos.selectedOptions.selected.length < 1"
+        <button type="submit" color="primary" [disabled]= "!form.get('nome')!.valid || !form.get('email')!.valid || !form.get('cpf')!.valid"
         test-id="botaoCadastro">Cadastrar</button>
          
     </form>
