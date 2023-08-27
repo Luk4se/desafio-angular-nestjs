@@ -1,0 +1,65 @@
+    
+<main>    
+    <form [formGroup]="form">
+        <h1><b>Cadastro de Colaborador</b></h1>
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input type="nome" matInput placeholder="Nome Completo" formControlName="nome">
+            <mat-error *ngIf="form.get('nome')!.hasError('required')">
+                Nome é <strong>obrigatorio!</strong>  
+            </mat-error>
+            <mat-error *ngIf="form.get('nome')!.hasError('nome')">
+                Nome não é válido! 
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+        
+        <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="Ex: pat@example.com" formControlName="email">  
+            <mat-error *ngIf="form.get('email')!.hasError('required')">
+                Email é <strong>obrigatorio!</strong>  
+            </mat-error>
+            <mat-error *ngIf="form.get('email')!.hasError('email')">
+                    Email não é válido! 
+            </mat-error>
+            
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>CPF</mat-label>
+            <input type="cpf" matInput placeholder="000.000.000-00" formControlName="cpf" mask= "000.000.000-00">  
+            <mat-error *ngIf="form.get('cpf')!.hasError('required')">
+                CPF é <strong>obrigatorio!</strong>  
+            </mat-error>
+            <mat-error *ngIf="form.get('cpf')!.hasError('minlength') || form.get('cpf')!.hasError('maxlength')  ">
+                CPF não é válido! 
+            </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Celular</mat-label>
+            <mat-icon matSuffix>phone</mat-icon>
+            <input type="tel" matInput placeholder="(XX) XXXXX-XXXX" mask= "(00) 00000-0000">  
+        </mat-form-field>
+
+        <mat-selection-list #conhecimentos FormControlName="conhecimentosLista" multiple (selectionChange)="desativarNaoMarcados()">
+            <mat-label><h4><b>Conhecimentos*</b></h4></mat-label>
+            <mat-list-option #foo *ngFor="let conhecimento of tiposDeConhecimento" [value]="conhecimento"
+            [disabled]="conhecimentos.selectedOptions.selected.length >= 3 && !foo.selected">
+              {{conhecimento}}
+            </mat-list-option>
+            <mat-error *ngIf="conhecimentos.selectedOptions.selected.length < 1">
+                Conhecimentos é <strong>obrigatorio!</strong>  
+              </mat-error>
+          </mat-selection-list>
+        <p>
+            Options selected: {{conhecimentos.selectedOptions.selected.length}}
+        </p>
+
+        <button mat-raised-button color="primary" [disabled]= "!form.get('nome')!.valid || !form.get('email')!.valid || !form.get('cpf')!.valid 
+        || conhecimentos.selectedOptions.selected.length < 1"
+        test-id="botaoCadastro">Cadastrar</button>
+         
+    </form>
+</main>
