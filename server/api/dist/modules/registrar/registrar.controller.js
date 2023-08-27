@@ -15,13 +15,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegistrarController = void 0;
 const common_1 = require("@nestjs/common");
 const registrar_service_1 = require("./registrar.service");
-const colaborador_registrar_1 = require("./model/colaborador-registrar");
+const criarColaborador_dto_1 = require("./dto/criarColaborador.dto");
 let RegistrarController = class RegistrarController {
     constructor(registrarService) {
         this.registrarService = registrarService;
     }
-    registrar(cadastroColaborador) {
-        return cadastroColaborador;
+    registrar(criarColaborador) {
+        this.registrarService.criarColaborador(criarColaborador);
     }
 };
 exports.RegistrarController = RegistrarController;
@@ -29,7 +29,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [colaborador_registrar_1.RegistrarColaborador]),
+    __metadata("design:paramtypes", [criarColaborador_dto_1.CriarColaboradorDto]),
     __metadata("design:returntype", void 0)
 ], RegistrarController.prototype, "registrar", null);
 exports.RegistrarController = RegistrarController = __decorate([

@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegistrarColaborador = void 0;
 const class_validator_1 = require("class-validator");
-const validador_1 = require("../../../validador");
 class RegistrarColaborador {
 }
 exports.RegistrarColaborador = RegistrarColaborador;
@@ -31,7 +30,6 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MaxLength)(11),
-    (0, validador_1.isUnique)({ tableName: 'colaboradores', column: 'cpf' }),
     __metadata("design:type", String)
 ], RegistrarColaborador.prototype, "cpf", void 0);
 __decorate([

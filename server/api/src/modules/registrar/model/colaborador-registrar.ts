@@ -1,5 +1,5 @@
 import { IsEmail, IsNotEmpty, IsOptional, IsString, MaxLength, IsAlpha, isAlphanumeric } from "class-validator";
-import { isUnique } from "src/validador";
+//import { isUnique } from "src/validador";
 
 export class RegistrarColaborador{
     @IsNotEmpty()
@@ -15,7 +15,7 @@ export class RegistrarColaborador{
     @IsNotEmpty()
     @IsString()
     @MaxLength(11)
-    @isUnique({tableName: 'colaboradores', column: 'cpf'})
+    //@isUnique({tableName: 'colaboradores', column: 'cpf'})
     cpf: string;
 
     @IsOptional() 

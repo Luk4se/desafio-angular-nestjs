@@ -1,7 +1,7 @@
 import { RegistrarService } from './registrar.service';
-import { RegistrarColaborador } from './model/colaborador-registrar';
+import { CriarColaboradorDto } from './dto/criarColaborador.dto';
 export declare class RegistrarController {
     private readonly registrarService;
     constructor(registrarService: RegistrarService);
-    registrar(cadastroColaborador: RegistrarColaborador): RegistrarColaborador;
+    registrar(criarColaborador: CriarColaboradorDto): void;
 }

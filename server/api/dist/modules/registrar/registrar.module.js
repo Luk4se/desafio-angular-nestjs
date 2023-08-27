@@ -10,16 +10,17 @@ exports.RegistrarModule = void 0;
 const common_1 = require("@nestjs/common");
 const registrar_service_1 = require("./registrar.service");
 const registrar_controller_1 = require("./registrar.controller");
-const validador_1 = require("../../validador");
+const typeorm_1 = require("@nestjs/typeorm");
+const registrar_entity_1 = require("./entities/registrar-entity");
 let RegistrarModule = class RegistrarModule {
 };
 exports.RegistrarModule = RegistrarModule;
 exports.RegistrarModule = RegistrarModule = __decorate([
     (0, common_1.Module)({
+        imports: [typeorm_1.TypeOrmModule.forFeature([registrar_entity_1.Colaborador])],
         controllers: [registrar_controller_1.RegistrarController],
         providers: [
             registrar_service_1.RegistrarService,
-            validador_1.IsUniqueConstraint
         ],
     })
 ], RegistrarModule);
