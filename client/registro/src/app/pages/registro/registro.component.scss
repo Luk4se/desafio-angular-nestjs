@@ -14,9 +14,10 @@ form {
     height: 100vh;
     flex-direction: column;
     color: purple;
+
     button,
-    mat-form-field,
-    mat-selection-list {
+    mat-form-field
+    {
         width: -webkit-fill-available;
     }
 }

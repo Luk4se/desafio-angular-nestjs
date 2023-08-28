@@ -7,18 +7,22 @@ import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {ReactiveFormsModule} from '@angular/forms'
-import {FormControl} from '@angular/forms'
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms';
+
 import {
   MatSlideToggleModule,
   _MatSlideToggleRequiredValidatorModule,
 } from '@angular/material/slide-toggle';
 
 import {NgxMaskModule} from 'ngx-mask'
+import { HttpClientModule } from '@angular/common/http';
+import { RegistroService } from './registro.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: RegistroComponent
+    component:RegistroComponent
   }
 ]
 
@@ -38,11 +42,15 @@ const routes: Routes = [
     MatButtonModule,
     ReactiveFormsModule,
     MatSlideToggleModule,
+    MatCheckboxModule,
+    FormsModule,
     NgxMaskModule.forRoot(),
-  ]
+
+    //Modulo HTTP
+    HttpClientModule
+  ],
+  providers: [ HttpClientModule]
 })
 export class RegistroModule {
 
  }
-
-
