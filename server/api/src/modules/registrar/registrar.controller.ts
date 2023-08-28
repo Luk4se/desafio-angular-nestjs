@@ -8,6 +8,7 @@ export class RegistrarController {
 
   @Post()
   registrar(@Body() criarColaborador: CriarColaboradorDto) {
+    console.log(criarColaborador)
     this.registrarService.criarColaborador(criarColaborador)
   }
 }

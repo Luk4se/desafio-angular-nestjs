@@ -17,11 +17,12 @@ import {
 
 import {NgxMaskModule} from 'ngx-mask'
 import { HttpClientModule } from '@angular/common/http';
+import { RegistroService } from './registro.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: RegistroComponent
+    component:RegistroComponent
   }
 ]
 
@@ -45,9 +46,10 @@ const routes: Routes = [
     FormsModule,
     NgxMaskModule.forRoot(),
 
-    //POST request
+    //Modulo HTTP
     HttpClientModule
-  ]
+  ],
+  providers: [ HttpClientModule]
 })
 export class RegistroModule {
 

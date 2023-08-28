@@ -21,6 +21,7 @@ let RegistrarController = class RegistrarController {
         this.registrarService = registrarService;
     }
     registrar(criarColaborador) {
+        console.log(criarColaborador);
         this.registrarService.criarColaborador(criarColaborador);
     }
 };

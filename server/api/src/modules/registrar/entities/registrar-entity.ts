@@ -17,9 +17,6 @@ export class Colaborador {
   @Column({ type: 'varchar', length: 11 })
   cpf: string;
 
-  @Column({ type: 'varchar', length: 11, nullable:true })
-  celular: string;
-
   @Column({ type: 'varchar' })
   conhecimento: string;
 
@@ -32,4 +29,7 @@ export class Colaborador {
 
   @Column({ type: 'timestamptz', nullable:true})
   dataAlteracao: Date;
+
+  @Column({ type: 'varchar', length: 11, nullable:true })
+  celular: string;
 }
