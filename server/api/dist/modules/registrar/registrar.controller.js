@@ -24,6 +24,12 @@ let RegistrarController = class RegistrarController {
         console.log(criarColaborador);
         this.registrarService.criarColaborador(criarColaborador);
     }
+    findAll() {
+        return this.registrarService.encontrarColaboradores();
+    }
+    findOne(id) {
+        return this.registrarService.verColaborador(+id);
+    }
 };
 exports.RegistrarController = RegistrarController;
 __decorate([
@@ -33,6 +39,19 @@ __decorate([
     __metadata("design:paramtypes", [criarColaborador_dto_1.CriarColaboradorDto]),
     __metadata("design:returntype", void 0)
 ], RegistrarController.prototype, "registrar", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], RegistrarController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], RegistrarController.prototype, "findOne", null);
 exports.RegistrarController = RegistrarController = __decorate([
     (0, common_1.Controller)('registrar'),
     __metadata("design:paramtypes", [registrar_service_1.RegistrarService])

@@ -4,4 +4,6 @@ export declare class RegistrarController {
     private readonly registrarService;
     constructor(registrarService: RegistrarService);
     registrar(criarColaborador: CriarColaboradorDto): void;
+    findAll(): Promise<import("./entities/registrar-entity").Colaborador[]>;
+    findOne(id: string): Promise<import("./entities/registrar-entity").Colaborador>;
 }

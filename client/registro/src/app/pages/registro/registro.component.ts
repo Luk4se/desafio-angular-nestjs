@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, FormArray} from '@angular/forms'
-import { RegistroService } from './registro.service';
 import { HttpClient } from '@angular/common/http';
 
 interface Conhecimento {
@@ -73,7 +72,7 @@ export class RegistroComponent implements OnInit {
     //unificar objetos para POST
     var jsobj = {}
     jsobj['conhecimentos'] = itens.toString();
-    jsobj['validacao'] = 'F'   
+    jsobj['validacao'] = 'Não Validado'   
     const obj1 = this.form.value;
     const obj2 = jsobj
     const formData = {
