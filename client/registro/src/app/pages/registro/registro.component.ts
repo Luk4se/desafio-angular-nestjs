@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, FormArray} from '@angular/forms'
+import { RegistroService } from './registro.service';
+import { HttpClient } from '@angular/common/http';
 
 interface Conhecimento {
   id: any;
@@ -7,6 +9,11 @@ interface Conhecimento {
   selected: boolean;
   disabled: boolean;
   listaConhecimento?: Conhecimento[];
+}
+
+interface FormFields {
+  name: string;
+  otherField: string;
 }
 
 @Component({
@@ -18,10 +25,15 @@ export class RegistroComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({    });
-   
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+    this.form = this.formBuilder.group({    })
   }
+
+  public sendPost(data){
+    console.log(data)
+    return this.http.post('http://localhost:3000/registrar', data).subscribe();
+   }
+
   //Array para criação dos checkboxs
   conhecimentos: Conhecimento = {
     id: 0,
@@ -39,8 +51,9 @@ export class RegistroComponent implements OnInit {
     ]
 };
 
+
+
   ngOnInit(): void {
-      
     this.form = this.formBuilder.group({
 
       nome: ['', [Validators.required, Validators.maxLength(100)]],
@@ -49,9 +62,7 @@ export class RegistroComponent implements OnInit {
       celular: [Validators.minLength(0)]
   })
 }
-
-
-      
+     
   onSubmit() {
     let itens = getItensSelecionados();
     
@@ -59,10 +70,19 @@ export class RegistroComponent implements OnInit {
       return;
     }
 
-    if (this.form.valid) {
-      console.log(this.form.value)
-      console.log(this.form.value + itens);
-    } 
+    //unificar objetos para POST
+    var jsobj = {}
+    jsobj['conhecimentos'] = itens.toString();
+    jsobj['validacao'] = 'F'   
+    const obj1 = this.form.value;
+    const obj2 = jsobj
+    const formData = {
+      ...obj1,
+      ...obj2
+    };
+
+     this.sendPost(formData);
+ 
   }
 
 }
@@ -78,9 +98,7 @@ function getItensSelecionados() {
    itensSelecionados.push(items[i].value);
   }
 
-  const item = itensSelecionados.toString();
-  console.log(item)
-  return JSON.parse(item);
+  return itensSelecionados;
 
 
 
@@ -98,3 +116,4 @@ function validarCheckbox(itensSelecionados) {
     return true;
   }
 }
+
